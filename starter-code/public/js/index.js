@@ -1,9 +1,10 @@
-function fetchChart(start, end) {
+function fetchChart({ start, end, currency }) {
   axios
     .get("http://api.coindesk.com/v1/bpi/historical/close.json", {
       params: {
         start,
-        end
+        end,
+        currency
       }
     })
     .then(function(response) {
@@ -61,7 +62,13 @@ function generateChart(labels, data) {
   });
 }
 
-$("#start-date, #end-date").change(() => {
-  fetchChart($("#start-date").val(), $("#end-date").val());
-});
-fetchChart($("#start-date").val(), $("#end-date").val());
+$("#start-date, #end-date,#currency").change(updateChart);
+
+function updateChart() {
+  fetchChart({
+    start: $("#start-date").val(),
+    end: $("#end-date").val(),
+    currency: $("#currency").val()
+  });
+}
+updateChart();

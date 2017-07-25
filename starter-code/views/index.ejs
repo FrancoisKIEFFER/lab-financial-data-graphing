@@ -7,6 +7,11 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <select id="currency">
+  <option value="USD">USD</option>
+  <option value="EUR">EUR</option>
+    </select>
+
     <input type="date" id="start-date" value="2016-10-31"> 
     <input type="date" id="end-date" value="<%= new Date().toISOString().substring(0,10) %>"> 
    <canvas id="myChart" width="400" height="400"></canvas>
